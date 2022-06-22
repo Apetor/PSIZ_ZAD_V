@@ -7,6 +7,15 @@
 
 using namespace std;
 
+struct Naglowek 
+{
+    short bfType;
+    int bfSize;
+    short bfReserved1;
+    short bfReserved2;
+    int bfOffBits;
+} Plik;
+
 int main(int argc, char** argv) {
   const char* file_path = "test.bmp";
   if (argc >= 2) {
