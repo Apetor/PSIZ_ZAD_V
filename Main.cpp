@@ -9,14 +9,16 @@
 #include <stdlib.h>
 #include <limits.h>
 using namespace std;
-struct Naglowek {
-    short bfType;
-    int bfSize;
-    short bfReserved1;
-    short bfReserved2;
+struct Naglowek 
+{
+    short Typ;
+    int Rozmiar;
+    short Rezerwacja1;
+    short Rezerwacja2;
     int bfOffBits;
 } Plik;
-struct NaglowekObrazu {
+struct NaglowekObrazu
+{
     int biSize;
     int biWidth;
     int biHeight;
@@ -29,7 +31,8 @@ struct NaglowekObrazu {
     int biClrUsed;
     int biClrImportant;
 } Obraz;
-struct KoloryRGB {
+struct KoloryRGB 
+{
     char R;
     char G;
     char B;
@@ -47,14 +50,14 @@ int main(int arc, char * argv[])
         cout << "\n\n Plik otwarty!" << endl;
     }
     cout << "\n INFORMACJE \n\n" << endl;
-    fread(&Plik.bfType, sizeof(Plik.bfType), 1, p);
-    cout << " Typ: %x" << Plik.bfType << endl;
-    fread(&Plik.bfSize, sizeof(File.Plik), 1, p);
-    cout << "\n Rozmiar pliku: %d bajtow" << File.bfSize << endl;
-    fread(&Plik.bfReserved1, sizeof(Plik.bfReserved1), 1, p);
-    cout << "\n Zarezerwowane1: %d" << Plik.bfReserved1 << endl;
-    fread(&Plik.bfReserved2, sizeof(Plik.bfReserved2), 1, p);
-    cout << "\n Zarezerwowane2: %d" <<  Plik.bfReserved2 << endl;
+    fread(&Plik.Typ, sizeof(Plik.Typ), 1, p);
+    cout << " Typ: %x" << Plik.Typ << endl;
+    fread(&Plik.Rozmiar, sizeof(Plik.Rozmiar), 1, p);
+    cout << "\n Rozmiar pliku: %d bajtow" << File.Rozmiar << endl;
+    fread(&Plik.Rezerwacja1, sizeof(Plik.Rezerwacja1), 1, p);
+    cout << "\n Zarezerwowane1: %d" << Plik.Rezerwacja1 << endl;
+    fread(&Plik.Rezerwacja2, sizeof(Plik.Rezerwacja2), 1, p);
+    cout << "\n Zarezerwowane2: %d" <<  Plik.Rezerwacja2 << endl;
     fread(&Plik.bfOffBits, sizeof(Plik.bfOffBits), 1, p);
     cout << "\n Pozycja danych obrazkowych: %d" << Plik.bfOffBits << endl;
     cout << "\n" << endl;
@@ -92,12 +95,12 @@ int main(int arc, char * argv[])
         cout << "\n\nPlik otwarty" << endl;
     }
     fseek(n, 0, SEEK_SET);
-    fwrite(&Plik.bfType, sizeof(Plik.bfType), 1, n);
-    fwrite(&Plik.bfSize, sizeof(Plik.bfSize), 1, n);
-    fwrite(&Plik.bfReserved1, sizeof(Plik.bfReserved1), 1, n);
-    fwrite(&Plik.bfReserved2, sizeof(v.bfReserved2), 1, n);
+    fwrite(&Plik.Typ, sizeof(Plik.Typ), 1, n);
+    fwrite(&Plik.Rozmiar, sizeof(Plik.Rozmiar), 1, n);
+    fwrite(&Plik.Rezerwacja1, sizeof(Plik.Rezerwacja1), 1, n);
+    fwrite(&Plik.Rezerwacja2, sizeof(v.Rezerwacja2), 1, n);
     fwrite(&Plik.bfOffBits, sizeof(Plik.bfOffBits), 1,n);
-    fseek(w, 14, SEEK_SET);
+    fseek(n, 14, SEEK_SET);
     fwrite(&Obraz.biSize, sizeof(Obraz.biSize), 1, n);
     fwrite(&Obraz.biWidth, sizeof(Obraz.biWidth), 1,n);
     fwrite(&Obraz.biHeight, sizeof(Obraz.biHeight), 1, n);
